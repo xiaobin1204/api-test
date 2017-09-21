@@ -23,10 +23,10 @@ let list1 = [
 {"name": "二哥", "age": 19}
 ],
 [
-{"name": "王二", "age": 29},
-{"name": "张三", "age": 18},
-{"name": "李三", "age": 21},
-{"name": "二哥", "age": 19}
+{"name": "李寻欢", "age": 129},
+{"name": "风清扬", "age": 218},
+{"name": "欧阳锋", "age": 521},
+{"name": "杨过", "age": 19}
 ]
 ]
 let list2 = [
@@ -49,19 +49,23 @@ router.route('/getToken')
     response.send('hello-vue')
   })
 router.route('/getList1')
-  .get((request, response) => {
+  .post((request, response) => {
     const page = request.body.page;
     res = list1[page - 1]
+    total = list1.length
     response.send({
-      res
+      res: res,
+      total: total
     })
   })
 router.route('/getList2')
-  .get((request, response) => {
+  .post((request, response) => {
     const page = request.body.page;
     res = list2[page - 1]
+    total = list2.length
     response.send({
-      res
+      res: res,
+      total: total
     })
   })
 router.route('/getUser')
